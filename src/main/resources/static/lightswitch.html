@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<title>Light Switch</title>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+
+<script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment.min.js"></script>
+
+ <style type="text/css">
+      body {
+        padding-top: 25px;
+        padding-bottom: 25px;
+      }
+ </style>
+
+
+</head>
+<body>
+
+<div class="container">
+
+  <!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<title>Light Switch</title>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+
+<script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment.min.js"></script>
+
+
+ <style type="text/css">
+      body {
+        padding-top: 25px;
+        padding-bottom: 25px;
+        background: #dbe6dd;
+        text-align: center;
+        -webkit-transform: translateZ(0);
+}
+
+.btn-big-red {
+  background-color: #C63702;
+  background-image: linear-gradient(167deg, rgba(255, 255, 255, 0.1) 50%, rgba(0, 0, 0, 0) 55%), linear-gradient(to bottom, rgba(255, 255, 255, 0.15), rgba(0, 0, 0, 0));
+  border-radius: 6px;
+  box-shadow: 0 0 0 1px #C63702 inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 8px 0 0 #AD3002, 0 8px 0 1px rgba(0, 0, 0, 0.4), 0 8px 8px 1px rgba(0, 0, 0, 0.5);
+  color: #FFF;
+  display: inline-block;
+  font-family: "Lucida Grande", Arial, sans-serif;
+  font-size: 22px;
+  font-weight: bold;
+  height: 61px;
+  letter-spacing: -1px;
+  line-height: 61px;
+  margin: 30px 0 10px;
+  position: relative;
+  text-align: center;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+  text-decoration: none !important;
+  top: 0;
+  width: 186px;
+  -moz-transition: 0.15s;
+  -o-transition: 0.15s;
+  -webkit-transition: 0.15s;
+  transition: 0.15s;
+}
+.btn-big-red:hover, .btn-big-red:focus {
+  background-color: #D13902;
+  box-shadow: 0 0 0 1px #C63702 inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 10px 0 0 #AD3002, 0 10px 0 1px rgba(0, 0, 0, 0.4), 0 10px 8px 1px rgba(0, 0, 0, 0.6);
+  top: -2px;
+}
+.btn-big-red:active {
+  box-shadow: 0 0 0 1px #AD3002 inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 0 0 1px rgba(0, 0, 0, 0.4);
+  -moz-transform: translateY(10px);
+  -ms-transform: translateY(10px);
+  -webkit-transform: translateY(10px);
+  transform: translateY(10px);
+}
+
+ </style>
+
+ <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+</head>
+<body>
+
+<div class="container">
+
+ 
+  <div class="col-xs-2 col-sm-2">
+  
+        
+    <a href="#" class="btn-big-red" id="powerCycle1">
+        <span id="message1">POWER</span>
+    </a>
+    
+    <br/>
+    <a href="#" class="btn-big-red" id="powerCycle2">
+        <span id="message2">POWER</span>
+    </a>
+    <br/>
+    <a href="#" class="btn-big-red" id="powerCycle3">
+        <span id="message3">POWER</span>
+    </a>
+    <br/>
+    <a href="#" class="btn-big-red" id="powerCycle4">
+        <span id="message4">POWER</span>
+    </a>
+    <br/>
+    <a href="#" class="btn-big-red" id="powerCycle5">
+        <span id="message5">POWER</span>
+    </a>
+        
+  </div>
+  
+  <div class="col-xs-10 col-sm-10"> 
+    <img id="mjpeg_dest" width="800" height="600" onclick="toggle_fullscreen(this);" src="http://162.251.134.46:50110/html/cam_pic_new.php?time=1466642583660&amp;pDelay=40000">
+
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <h4>LED Toggles</h4>
+    <div class="col-xs-4 col-sm-4"> 
+      <a href="#" class="btn btn-danger" id="ledRedButton">
+        <span id="ledRed">POWER</span>
+      </a>
+    </div>
+    <div class="col-xs-4 col-sm-4"> 
+      <a href="#" class="btn btn-success" id="ledGreenButton">
+        <span id="ledRed">POWER</span>
+      </a>
+    </div>
+    <div class="col-xs-4 col-sm-4"> 
+      <a href="#" class="btn btn-info" id="ledBlueButton">
+        <span id="ledRed">POWER</span>
+      </a>
+    </div>
+
+  </div>
+
+
+</div>
+
+
+<script>
+
+
+$(document).ready(function(){
+    jQuery.support.cors = true;
+   
+      
+    var outlets = { };
+    
+    $.getJSON( "/homeauto/rfoutlet", function( data ) {
+        console.log('loaded');
+        outlets = data.outlets;
+        console.log(outlets);
+       
+        if(!outlets[0].running){
+          $("#message1").text("OFF");
+        }else{
+          $("#message1").text("ON");
+        }
+        
+        if(!outlets[1].running){
+          $("#message2").text("OFF");
+        }else{
+          $("#message2").text("ON");
+        }
+        
+        if(!outlets[2].running){
+          $("#message3").text("OFF");
+        }else{
+          $("#message3").text("ON");
+        }
+        
+        if(!outlets[3].running){
+          $("#message4").text("OFF");
+        }else{
+          $("#message4").text("ON");
+        }
+        
+        if(!outlets[4].running){
+          $("#message5").text("OFF");
+        }else{
+          $("#message5").text("ON");
+        }
+    });
+
+  function getData(){
+    $.getJSON( "/homeauto/rfoutlet", function( data ) {
+            console.log('loaded');
+            outlets = data.outlets;
+            console.log(outlets); 
+        });
+  }
+  
+  function change(value){
+        var json;
+        if(!value.running){
+          console.log("Turn on outlet");
+          json = { "id": value.id, "code": value.on, "pulse": value.pulse};
+        
+        }else{
+          console.log("Turn off outlet");
+            json = { "id": value.id,  "code": value.off, "pulse": value.pulse };
+        
+        }
+        console.log(json);
+       
+        
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            url: "/homeauto/rfoutlet",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify(json),
+            success: function (html) {
+              console.log("refresh");
+               
+            }
+        });
+  }
+
+    $("#powerCycle1").click(function(){     
+        
+        console.log(outlets[0]);
+        change(outlets[0]);
+        if(outlets[0].running){
+          outlets[0].running = false;
+          $("#message1").text("OFF");
+        }else{
+          outlets[0].running = true;
+          $("#message1").text("ON");
+        }
+    });
+    $("#powerCycle2").click(function(){     
+        
+        console.log(outlets[1]);
+        change(outlets[1]);
+        if(outlets[1].running){
+          outlets[1].running = false;
+          $("#message2").text("OFF");
+        }else{
+          outlets[1].running = true;
+          $("#message2").text("ON");
+        }
+    });
+    $("#powerCycle3").click(function(){     
+
+        console.log(outlets[2]);
+        change(outlets[2]);
+        if(outlets[2].running){
+          outlets[2].running = false;
+          $("#message3").text("OFF");
+          
+        }else{
+          outlets[2].running = true;
+          $("#message3").text("ON");
+        }
+    });
+    $("#powerCycle4").click(function(){     
+        
+        console.log(outlets[3]);
+        change(outlets[3]);
+        if(outlets[3].running){
+          outlets[3].running = false;
+          $("#message4").text("OFF");
+        }else{
+          outlets[3].running = true;
+          $("#message4").text("ON");
+        }
+    });
+    $("#powerCycle5").click(function(){     
+        
+        console.log(outlets[4]);
+        change(outlets[4]);
+        if(outlets[4].running){
+          outlets[4].running = false;
+          $("#message5").text("OFF");
+        }else{
+          outlets[4].running = true;
+          $("#message5").text("ON");
+        }
+    });
+
+    $("#ledRedButton").click(function(){
+        $.get("/homeauto/toggleLed/red", function(data, status){
+            console.log("toggle red");
+        });
+    });
+
+    $("#ledGreenButton").click(function(){
+        $.get("/homeauto/toggleLed/green", function(data, status){
+            console.log("toggle green");
+        });
+    });
+
+    $("#ledBlueButton").click(function(){
+        $.get("/homeauto/toggleLed/blue", function(data, status){
+            console.log("toggle blue");
+        });
+    });
+ 
+});
+
+</script>
+
+</body>
+</html>
+

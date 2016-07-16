@@ -1,0 +1,43 @@
+
+
+server:
+    port: 8081
+    context-path: /homeauto
+    
+    
+logging:
+    level.org: INFO
+    level.com: INFO
+
+security:
+  basic:
+    enabled: false
+    
+
+homeauto:
+  outlets:
+    - outlet1;4216115;4216124;188
+    - outlet2;4216259;4216268;188
+    - outlet3;4216579;4216588;188
+    - outlet4;4218115;4218124;188
+    - outlet5;4224259;4224268;188
+
+  
+    
+  
+    
+    
+
+#spring:
+#  data:
+#    mongodb:
+#      host: localhost
+#      port: 27017
+#      database: notification      
+#      username: lexrayAdmin
+#      password: lexrayAdmin
+#      authentication-database: notification
+
+
+
+
