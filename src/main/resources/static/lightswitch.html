@@ -143,7 +143,7 @@
   </div>
   
   <div class="col-xs-10 col-sm-10"> 
-    <img id="mjpeg_dest" width="800" height="600" onclick="toggle_fullscreen(this);" src="http://162.251.134.46:50110/html/cam_pic_new.php?time=1466642583660&amp;pDelay=40000">
+    <img id="mjpeg_dest" width="640" height="480" onclick="toggle_fullscreen(this);" src="http://162.251.134.46:50110/html/cam_pic_new.php?time=1466642583660&amp;pDelay=40000">
 
     <br/>
     <br/>
@@ -186,7 +186,23 @@ $(document).ready(function(){
         outlets = data.outlets;
         console.log(outlets);
        
-        if(!outlets[0].running){
+        setButtonNames();
+    });
+
+    
+    
+  function getData(){
+    $.getJSON( "/homeauto/rfoutlet", function( data ) {
+            console.log('loaded');
+            outlets = data.outlets;
+            //console.log(outlets);
+            setButtonNames();
+            
+        });
+  }
+  
+  function setButtonNames(){
+	  if(!outlets[0].running){
           $("#message1").text("OFF");
         }else{
           $("#message1").text("ON");
@@ -215,14 +231,6 @@ $(document).ready(function(){
         }else{
           $("#message5").text("ON");
         }
-    });
-
-  function getData(){
-    $.getJSON( "/homeauto/rfoutlet", function( data ) {
-            console.log('loaded');
-            outlets = data.outlets;
-            console.log(outlets); 
-        });
   }
   
   function change(value){
@@ -246,11 +254,11 @@ $(document).ready(function(){
             contentType: "application/json; charset=utf-8",
             data: JSON.stringify(json),
             success: function (html) {
-              console.log("refresh");
-               
+              console.log("refresh");           
             }
         });
   }
+  
 
     $("#powerCycle1").click(function(){     
         
@@ -264,6 +272,7 @@ $(document).ready(function(){
           $("#message1").text("ON");
         }
     });
+    
     $("#powerCycle2").click(function(){     
         
         console.log(outlets[1]);
@@ -276,6 +285,7 @@ $(document).ready(function(){
           $("#message2").text("ON");
         }
     });
+    
     $("#powerCycle3").click(function(){     
 
         console.log(outlets[2]);
@@ -289,6 +299,7 @@ $(document).ready(function(){
           $("#message3").text("ON");
         }
     });
+    
     $("#powerCycle4").click(function(){     
         
         console.log(outlets[3]);
@@ -301,6 +312,7 @@ $(document).ready(function(){
           $("#message4").text("ON");
         }
     });
+    
     $("#powerCycle5").click(function(){     
         
         console.log(outlets[4]);
