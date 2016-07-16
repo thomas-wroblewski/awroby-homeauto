@@ -46,7 +46,7 @@
 //         	mqttAsyncClient.subscribe("/raspi1/rfoutlet/flip", 0, null, new IMqttActionListener() {
 //                @Override
 //                public void onSuccess(IMqttToken asyncActionToken) {
-//                	logger.info("Subscribed to /raspi1/rfoutlet");
+//                	logger.info("Subscribed to /raspi1/rfoutlet/flip");
 //                }
 //
 //                @Override
