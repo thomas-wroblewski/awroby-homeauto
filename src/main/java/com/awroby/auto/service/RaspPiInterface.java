@@ -14,9 +14,13 @@ import com.awroby.auto.dao.OutletRepository;
 import com.awroby.auto.objects.Outlet;
 import com.pi4j.io.gpio.GpioController;
 import com.pi4j.io.gpio.GpioFactory;
+import com.pi4j.io.gpio.GpioPinDigitalInput;
 import com.pi4j.io.gpio.GpioPinDigitalOutput;
+import com.pi4j.io.gpio.PinPullResistance;
 import com.pi4j.io.gpio.PinState;
 import com.pi4j.io.gpio.RaspiPin;
+import com.pi4j.io.gpio.event.GpioPinDigitalStateChangeEvent;
+import com.pi4j.io.gpio.event.GpioPinListenerDigital;
 import com.pi4j.wiringpi.Gpio;
 import com.pi4j.wiringpi.SoftPwm;
 
@@ -32,10 +36,12 @@ public class RaspPiInterface {
     final GpioPinDigitalOutput ledRed = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_27, "ledRed", PinState.HIGH);
     final GpioPinDigitalOutput ledGreen = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_28, "ledGreen", PinState.HIGH);
     final GpioPinDigitalOutput ledBlue = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_29, "ledBlue", PinState.HIGH);
+    final GpioPinDigitalInput pushButton = gpio.provisionDigitalInputPin(RaspiPin.GPIO_06, "pushButton", PinPullResistance.PULL_UP);
     final int pwmPin = 26; 
     
 	@Autowired private OutletRepository outletRepo;
 	@Autowired private ScheduledTasks tasks;
+	@Autowired private SlackIntegrations slack;
 	
 	@PostConstruct
 	public void init(){
@@ -60,6 +66,44 @@ public class RaspPiInterface {
 		ledGreen.low();
 		ledBlue.setShutdownOptions(true, PinState.LOW);
 		ledBlue.low();
+		
+		pushButton.addListener(new GpioPinListenerDigital() {
+            @Override
+            public void handleGpioPinDigitalStateChangeEvent(GpioPinDigitalStateChangeEvent event) {
+                // display pin state on console
+                logger.info(" --> GPIO PIN STATE CHANGE: " + event.getPin() + " = " + event.getState());
+                try{
+                	if(event.getState().isLow()){ 
+                		toggleLED("ledBlue"); 
+                		slack.sendWebHook();
+                	}
+                }catch(Exception ex){
+                	ex.printStackTrace();
+                }
+               
+            }
+            
+        });
+    
+	}
+	
+	
+	public void setupPushButton(){
+		Thread t = new Thread(new Runnable(){
+
+			@Override
+			public void run() {
+				while(true){
+//					logger.info(pushButton.getState().toString());
+					if(pushButton.isHigh()){
+//						triggerPWM();
+						toggleLED("ledBlue");
+					}
+				}
+			}
+			
+		});
+		t.start();
 	}
 	
 	public void triggerPWM(){
