@@ -12,13 +12,18 @@ import javax.annotation.PostConstruct;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.awroby.auto.config.Properties;
 
 @Service
 public class SlackIntegrations {
 
 	private final String USER_AGENT = "Mozilla/5.0";
 	private static final Logger logger = LoggerFactory.getLogger(SlackIntegrations.class);
+	@Autowired Properties props;
+	//private String webhook = "";
 	
 	@PostConstruct
 	public void init(){
@@ -33,7 +38,7 @@ public class SlackIntegrations {
 	
 	public void sendWebHook(String username, String emoji, String channel, String message) throws IOException{
 		
-		String webhook = "https://hooks.slack.com/services/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";
+		String webhook = props.getWebhook();
 		
 		JSONObject json = new JSONObject();
 		json.put("text", message);
