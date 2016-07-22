@@ -75,7 +75,7 @@ public class RaspPiInterface {
                 try{
                 	if(event.getState().isLow()){ 
                 		toggleLED("ledBlue"); 
-                		slack.sendWebHook();
+                		slack.sendWebHook("WebHook", ":rat:", "@thomas.wroblewski", "Button pressed");
                 	}
                 }catch(Exception ex){
                 	ex.printStackTrace();

@@ -7,6 +7,8 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import javax.annotation.PostConstruct;
+
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,15 +20,26 @@ public class SlackIntegrations {
 	private final String USER_AGENT = "Mozilla/5.0";
 	private static final Logger logger = LoggerFactory.getLogger(SlackIntegrations.class);
 	
+	@PostConstruct
+	public void init(){
+		try {
+			sendWebHook("WebHook", ":rat:", "@thomas.wroblewski", "Starting Up");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	
 	
-	
-	public void sendWebHook() throws IOException{
+	public void sendWebHook(String username, String emoji, String channel, String message) throws IOException{
 		
 		String webhook = "https://hooks.slack.com/services/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";
 		
 		JSONObject json = new JSONObject();
-		json.put("text", "Button pushed");
+		json.put("text", message);
+		json.put("username", username);
+		json.put("channel", channel);
+		json.put("icon_emoji", emoji);
 		String urlParameters = "payload="+ json.toString();
 		
 		URL obj = new URL(webhook);
