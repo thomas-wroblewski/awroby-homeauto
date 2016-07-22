@@ -11,60 +11,72 @@
 //
 //public class MqttConnectionListener implements IMqttActionListener {
 //	private static final Logger logger = LoggerFactory.getLogger(MqttConnectionListener.class);
-//	private  MqttAsyncClient mqttAsyncClient;
-//	
-//	public MqttConnectionListener(MqttAsyncClient mqttAsyncClient){
+//	private MqttAsyncClient mqttAsyncClient;
+//
+//	public MqttConnectionListener(MqttAsyncClient mqttAsyncClient) {
 //		this.mqttAsyncClient = mqttAsyncClient;
+//
 //	}
 //
-//	 @Override
-//     public void onSuccess(IMqttToken asyncActionToken) {
-//         try {
-//         	mqttAsyncClient.subscribe("/raspi1/sensor/test", 0, null, new IMqttActionListener() {
-//                 @Override
-//                 public void onSuccess(IMqttToken asyncActionToken) {
-//                 	logger.info("Subscribed to /raspi1/sensor/test");
-//                 }
+//	@Override
+//	public void onSuccess(IMqttToken asyncActionToken) {
+//		try {
+//			mqttAsyncClient.subscribe("/rasp1/sensor/test", 0, null, new IMqttActionListener() {
+//				@Override
+//				public void onSuccess(IMqttToken asyncActionToken) {
+//					logger.info("Subscribed to /rasp1/sensor/test");
+//				}
 //
-//                 @Override
-//                 public void onFailure(IMqttToken asyncActionToken, Throwable exception) {
+//				@Override
+//				public void onFailure(IMqttToken asyncActionToken, Throwable exception) {
 //
-//                 }
-//             });
-//         	mqttAsyncClient.subscribe("/raspi1/hbt", 0, null, new IMqttActionListener() {
-//                @Override
-//                public void onSuccess(IMqttToken asyncActionToken) {
-//                	logger.info("Subscribed to /raspi1/hbt");
-//                }
+//				}
+//			});
+//			mqttAsyncClient.subscribe("/rasp1/hbt", 0, null, new IMqttActionListener() {
+//				@Override
+//				public void onSuccess(IMqttToken asyncActionToken) {
+//					logger.info("Subscribed to /rasp1/hbt");
+//				}
 //
-//                @Override
-//                public void onFailure(IMqttToken asyncActionToken, Throwable exception) {
+//				@Override
+//				public void onFailure(IMqttToken asyncActionToken, Throwable exception) {
 //
-//                }
-//         	});
-//         	
-//         	mqttAsyncClient.subscribe("/raspi1/rfoutlet/flip", 0, null, new IMqttActionListener() {
-//                @Override
-//                public void onSuccess(IMqttToken asyncActionToken) {
-//                	logger.info("Subscribed to /raspi1/rfoutlet/flip");
-//                }
+//				}
+//			});
 //
-//                @Override
-//                public void onFailure(IMqttToken asyncActionToken, Throwable exception) {
+//			mqttAsyncClient.subscribe("/rasp1/rfoutlet/flip", 0, null, new IMqttActionListener() {
+//				@Override
+//				public void onSuccess(IMqttToken asyncActionToken) {
+//					logger.info("Subscribed to /rasp1/rfoutlet/flip");
+//				}
 //
-//                }
-//         	});
-//         	
-//         	
+//				@Override
+//				public void onFailure(IMqttToken asyncActionToken, Throwable exception) {
 //
-//         } catch (MqttException e) {
-//             e.printStackTrace();
-//         }
-//     }
+//				}
+//			});
+//			
+//			mqttAsyncClient.subscribe("/rasp1/io", 0, null, new IMqttActionListener() {
+//				@Override
+//				public void onSuccess(IMqttToken asyncActionToken) {
+//					logger.info("Subscribed to /rasp1/io");
+//				}
+//
+//				@Override
+//				public void onFailure(IMqttToken asyncActionToken, Throwable exception) {
+//
+//				}
+//			});
+//			
+//			
+//		} catch (MqttException e) {
+//			e.printStackTrace();
+//		}
+//	}
 //
 //	@Override
 //	public void onFailure(IMqttToken arg0, Throwable arg1) {
 //		// TODO Auto-generated method stub
-//			
+//
 //	}
 //}

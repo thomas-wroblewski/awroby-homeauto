@@ -24,7 +24,7 @@ public class LedController {
 
 				@Override
 				public void run() {
-					// TODO Auto-generated method stub
+
 					logger.info("Toggling Red LED");
 					pi.toggleLED("ledRed");
 				}
@@ -34,7 +34,7 @@ public class LedController {
 			Thread t = new Thread(new Runnable(){
 				@Override
 				public void run() {
-					// TODO Auto-generated method stub
+
 					logger.info("Toggling Green LED");
 					pi.toggleLED("ledGreen");
 				}
@@ -45,7 +45,7 @@ public class LedController {
 
 				@Override
 				public void run() {
-					// TODO Auto-generated method stub
+
 					logger.info("Toggling Blue LED");
 					pi.toggleLED("ledBlue");		
 				}
@@ -64,7 +64,6 @@ public class LedController {
 		
 		
 			Thread t = new Thread(new Runnable(){
-
 				@Override
 				public void run() {
 					// TODO Auto-generated method stub

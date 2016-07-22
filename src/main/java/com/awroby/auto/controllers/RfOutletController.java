@@ -1,5 +1,7 @@
 package com.awroby.auto.controllers;
 
+import org.eclipse.paho.client.mqttv3.MqttAsyncClient;
+import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.slf4j.Logger;
@@ -24,6 +26,7 @@ public class RfOutletController {
 	@Autowired private RaspPiInterface commands;
 	@Autowired private ScheduledTasks tasks;
 	@Autowired private Properties props;
+	@Autowired private MqttAsyncClient mqttAsyncClient;
 	
 	@RequestMapping(value="resetOutlet", method=RequestMethod.GET)
 	public String resetOutletCodes(){
@@ -58,7 +61,6 @@ public class RfOutletController {
 			}
 		}
 		
-		
 		return "success";
 	}
 		
@@ -81,8 +83,15 @@ public class RfOutletController {
 		}
 
 		json.put("outlets", outlets);
-		
-		
+//		try{
+//			MqttMessage msg = new MqttMessage(json.toString().getBytes());
+//			if(mqttAsyncClient.isConnected()){
+//				logger.info("Sending out list");
+//				mqttAsyncClient.publish("/rasp1/rfoutlet", msg);	
+//			}
+//		}catch(Exception ex){
+//			ex.printStackTrace();
+//		}
 		
 		return json.toString();
 	}
@@ -114,9 +123,7 @@ public class RfOutletController {
 				tasks.removeEntry(o.getId());
 				o.setRunning(false);
 			}
-			
-			
-			
+
 			outletRepo.save(o);
 		}catch(Exception ex){
 			ex.printStackTrace();

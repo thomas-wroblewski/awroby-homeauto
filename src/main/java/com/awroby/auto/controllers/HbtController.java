@@ -19,7 +19,7 @@ public class HbtController {
 	public String receiveHbt(){
 		
 		logger.info("HBT received");
-		//schedule.setSomeoneHome(true);
+
 		schedule.autoTurnOn();
 		schedule.setLastCheckIn(System.currentTimeMillis());
 		return "hbt received";
