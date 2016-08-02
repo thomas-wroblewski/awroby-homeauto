@@ -30,8 +30,8 @@ myApp.config(['NgAdminConfigurationProvider', function (nga) {
         	.attributes({ placeholder: 'Must be a number between 4 and 10 digits' })
         	.validation({ required: true, minlength: 4, maxlength: 10 }),     
         nga.field('pulse', 'number')
-        	.attributes({ placeholder: 'Must be a number between 4 and 10 digits' })
-        	.validation({ required: true, minlength: 4, maxlength: 10 }),                   
+        	.attributes({ placeholder: 'Must be a number between 2 and 5 digits' })
+        	.validation({ required: true, minlength: 2, maxlength: 5 }),                   
     ]);
     
     outlets.editionView().fields(outlets.creationView().fields());
