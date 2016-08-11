@@ -17,6 +17,9 @@ import com.awroby.auto.dao.OutletRepository;
 @ConfigurationProperties(prefix="homeauto")
 public class Properties {
 	private static final Logger logger = LoggerFactory.getLogger(Properties.class);
+	private String webhook;
+
+
 	@Autowired private OutletRepository outletRepo;
 	
 	
@@ -30,6 +33,12 @@ public class Properties {
 		this.outlets = outlets;
 	}
 	
-	
+	public String getWebhook() {
+		return webhook;
+	}
+
+	public void setWebhook(String webhook) {
+		this.webhook = webhook;
+	}
 	
 }
