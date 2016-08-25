@@ -21,7 +21,9 @@ homeauto:
     - outlet3;4216579;4216588;188
     - outlet4;4218115;4218124;188
     - outlet5;4224259;4224268;188
-  webhook: https://hooks.slack.com/services/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 
+  webhook: https://hooks.slack.com/services/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
+  startupChannel: "@thomas.wroblewski"
+  buttonChannel: "@thomas.wroblewski"
 
   
     

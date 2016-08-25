@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.awroby.auto.config.Properties;
 import com.awroby.auto.dao.OutletRepository;
 import com.awroby.auto.objects.Outlet;
 import com.pi4j.io.gpio.GpioController;
@@ -42,6 +43,7 @@ public class RaspPiInterface {
 	@Autowired private OutletRepository outletRepo;
 	@Autowired private ScheduledTasks tasks;
 	@Autowired private SlackIntegrations slack;
+	@Autowired Properties props;
 	
 	@PostConstruct
 	public void init(){
@@ -74,20 +76,36 @@ public class RaspPiInterface {
                 logger.info(" --> GPIO PIN STATE CHANGE: " + event.getPin() + " = " + event.getState());
                 try{
                 	if(event.getState().isLow()){ 
-                		toggleLED("ledBlue"); 
-                		slack.sendWebHook("WebHook", ":rat:", "#frontdoor", "<http://frontdoor.lexray.com/mjpg/video.mjpg|Someone's Here - Click to find out who>");
-               
+//                		toggleLED("ledBlue"); 
+                		slack.sendWebHook("WebHook", ":rat:", props.getButtonChannel(), "<http://frontdoor.lexray.com/mjpg/video.mjpg|Someone's Here - Click to find out who>");
+                		blinker();              
                 	}
                 }catch(Exception ex){
                 	ex.printStackTrace();
                 }
-               
             }
-            
         });
+		
+		//Setup Button Blinker
+		ledGreen.high();
     
 	}
 	
+	public void blinker(){
+		//Using the Green Pin as its convenient 
+		try{
+			for(int i = 0; i < 25; i++){
+				
+				ledGreen.low();
+				Thread.sleep(500);
+				ledGreen.high();
+				Thread.sleep(500);
+			}
+		}catch(Exception ex){
+			ex.printStackTrace();
+		}
+		
+	}
 	
 	public void setupPushButton(){
 		Thread t = new Thread(new Runnable(){

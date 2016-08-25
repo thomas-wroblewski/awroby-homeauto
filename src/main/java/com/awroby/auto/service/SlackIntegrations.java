@@ -28,7 +28,7 @@ public class SlackIntegrations {
 	@PostConstruct
 	public void init(){
 		try {
-			sendWebHook("WebHook", ":rat:", "@tom.wroblewski", "Starting Up");
+			sendWebHook("WebHook", ":rat:", props.getStartupChannel(), "Starting Up");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
