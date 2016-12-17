@@ -18,6 +18,8 @@ import com.awroby.auto.dao.OutletRepository;
 public class Properties {
 	private static final Logger logger = LoggerFactory.getLogger(Properties.class);
 	private String webhook;
+	private String startupChannel;
+	private String buttonChannel;
 
 
 	@Autowired private OutletRepository outletRepo;
@@ -39,6 +41,22 @@ public class Properties {
 
 	public void setWebhook(String webhook) {
 		this.webhook = webhook;
+	}
+
+	public String getStartupChannel() {
+		return startupChannel;
+	}
+
+	public void setStartupChannel(String startupChannel) {
+		this.startupChannel = startupChannel;
+	}
+
+	public String getButtonChannel() {
+		return buttonChannel;
+	}
+
+	public void setButtonChannel(String buttonChannel) {
+		this.buttonChannel = buttonChannel;
 	}
 	
 }
