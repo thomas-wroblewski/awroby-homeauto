@@ -177,17 +177,6 @@ public class RaspPiInterface {
 				Thread.sleep(5000);
 				logger.info("togging off");
 				ledBlue.low();
-//				for (int i=0; i <100; i++){
-//					logger.info("Turn");
-//					SoftPwm.softPwmWrite(pwmPin, i);
-//					Thread.sleep(25);
-//				}
-//				
-//				
-//				for(int i=100; i > 0; i--){
-//					SoftPwm.softPwmWrite(pwmPin, i);
-//					Thread.sleep(25);
-//				}
 				
 			}else{
 				logger.error("Incorrect LED Name - Ignore");

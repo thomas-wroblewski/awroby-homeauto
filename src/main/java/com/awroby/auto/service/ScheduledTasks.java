@@ -25,7 +25,6 @@ public class ScheduledTasks {
 	private int timeout = 1000 * 60 * 10;
 	private boolean isSomeoneHome = false;
 	private long lastCheckIn = System.currentTimeMillis();
-	//private boolean disableTimeCheck = false;
 	
 
 	private Map<String, Long> timeoutMap = new ConcurrentHashMap<String, Long>();

@@ -24,7 +24,6 @@ public class RfOutletController {
 	@Autowired private RaspPiInterface commands;
 	@Autowired private ScheduledTasks tasks;
 	@Autowired private Properties props;
-//	@Autowired private MqttAsyncClient mqttAsyncClient;
 	
 	@RequestMapping(value="resetOutlet", method=RequestMethod.GET)
 	public String resetOutletCodes(){
@@ -37,13 +36,7 @@ public class RfOutletController {
 		}
 		
 		outletRepo.deleteAll();
-		
-//		outletRepo.save(new Outlet(4265267, 4265276, 188, "Outlet 1"));
-//		outletRepo.save(new Outlet(4265411, 4265420, 188, "Outlet 2"));
-//		outletRepo.save(new Outlet(4265731, 4265740, 188, "Outlet 3"));
-//		outletRepo.save(new Outlet(4267267, 4267276, 188, "Outlet 4"));
-//		outletRepo.save(new Outlet(4273411, 4273420, 188, "Outlet 5"));
-		
+
 		for(String o : props.getOutlets()){
 			try{
 				String[] split = o.split(";");
@@ -81,15 +74,6 @@ public class RfOutletController {
 		}
 
 		json.put("outlets", outlets);
-//		try{
-//			MqttMessage msg = new MqttMessage(json.toString().getBytes());
-//			if(mqttAsyncClient.isConnected()){
-//				logger.info("Sending out list");
-//				mqttAsyncClient.publish("/rasp1/rfoutlet", msg);	
-//			}
-//		}catch(Exception ex){
-//			ex.printStackTrace();
-//		}
 		
 		return json.toString();
 	}

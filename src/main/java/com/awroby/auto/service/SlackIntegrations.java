@@ -23,7 +23,7 @@ public class SlackIntegrations {
 	private final String USER_AGENT = "Mozilla/5.0";
 	private static final Logger logger = LoggerFactory.getLogger(SlackIntegrations.class);
 	@Autowired Properties props;
-	//private String webhook = "";
+	
 	
 	@PostConstruct
 	public void init(){
