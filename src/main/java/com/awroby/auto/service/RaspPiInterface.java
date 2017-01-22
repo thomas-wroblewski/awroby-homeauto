@@ -42,7 +42,6 @@ public class RaspPiInterface {
     final int pwmPin = 26; 
     
 	@Autowired private OutletRepository outletRepo;
-	@Autowired private ScheduledTasks tasks;
 	@Autowired private SlackIntegrations slack;
 	@Autowired Properties props;
 	
