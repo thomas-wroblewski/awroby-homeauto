@@ -11,19 +11,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
+import com.awroby.auto.config.Properties;
 import com.awroby.auto.dao.OutletRepository;
 import com.awroby.auto.objects.Outlet;
 
 @Service
 public class ScheduledTasks {
 	private static final Logger logger = LoggerFactory.getLogger(ScheduledTasks.class);
-	
+	@Autowired private Properties properties;
 	@Autowired private RaspPiInterface commands;
 	@Autowired private OutletRepository outletRepo;
 	
 	private int timeout = 1000 * 60 * 10;
 	private boolean isSomeoneHome = false;
 	private long lastCheckIn = System.currentTimeMillis();
+	//private boolean disableTimeCheck = false;
 	
 
 	private Map<String, Long> timeoutMap = new ConcurrentHashMap<String, Long>();
@@ -81,7 +83,7 @@ public class ScheduledTasks {
 	
 	@Scheduled(initialDelay=1000, fixedRate=60000)
 	public void autoShutoff(){
-		if(!isSomeoneHome){
+		if(!isSomeoneHome && !properties.isDisableTimeCheck()){
 			for (String key : timeoutMap.keySet()) {			
 				Outlet o = outletRepo.findById(key);
 			    long time = timeoutMap.get(key);
@@ -118,4 +120,5 @@ public class ScheduledTasks {
 	public void setLastCheckIn(long lastCheckIn) {
 		this.lastCheckIn = lastCheckIn;
 	}
+
 }

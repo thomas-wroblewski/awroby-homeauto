@@ -1,6 +1,7 @@
 package com.awroby.auto.service;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 
 import javax.annotation.PostConstruct;
@@ -68,7 +69,7 @@ public class RaspPiInterface {
 		ledGreen.low();
 		ledBlue.setShutdownOptions(true, PinState.LOW);
 		ledBlue.low();
-		
+		pushButton.setDebounce(3000);
 		pushButton.addListener(new GpioPinListenerDigital() {
             @Override
             public void handleGpioPinDigitalStateChangeEvent(GpioPinDigitalStateChangeEvent event) {
@@ -76,9 +77,19 @@ public class RaspPiInterface {
                 logger.info(" --> GPIO PIN STATE CHANGE: " + event.getPin() + " = " + event.getState());
                 try{
                 	if(event.getState().isLow()){ 
-//                		toggleLED("ledBlue"); 
-                		slack.sendWebHook("WebHook", ":rat:", props.getButtonChannel(), "<http://frontdoor.lexray.com/mjpg/video.mjpg|Someone's Here - Click to find out who>");
-                		blinker();              
+                		new Thread() {
+                		    public void run() {
+                		    	try {
+									slack.sendWebHook("WebHook", ":rat:", props.getButtonChannel(), "<http://frontdoor.lexray.com/mjpg/video.mjpg|Someone's Here - Click to find out who>");
+								} catch (IOException e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
+								}
+                        		blinker();        
+                		    }
+                		}.start();
+                		
+                		      
                 	}
                 }catch(Exception ex){
                 	ex.printStackTrace();

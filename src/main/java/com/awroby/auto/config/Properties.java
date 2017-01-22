@@ -20,6 +20,7 @@ public class Properties {
 	private String webhook;
 	private String startupChannel;
 	private String buttonChannel;
+	private boolean disableTimeCheck;
 
 
 	@Autowired private OutletRepository outletRepo;
@@ -57,6 +58,14 @@ public class Properties {
 
 	public void setButtonChannel(String buttonChannel) {
 		this.buttonChannel = buttonChannel;
+	}
+
+	public boolean isDisableTimeCheck() {
+		return disableTimeCheck;
+	}
+
+	public void setDisableTimeCheck(boolean disableTimeCheck) {
+		this.disableTimeCheck = disableTimeCheck;
 	}
 	
 }
