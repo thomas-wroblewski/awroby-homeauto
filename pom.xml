@@ -50,9 +50,18 @@
 		<dependency>
 		    <groupId>com.pi4j</groupId>
 		    <artifactId>pi4j-core</artifactId>
-		   <version>1.0</version>
+		   <version>1.2-SNAPSHOT</version>
 		</dependency>
-		
+		<dependency>
+		    <groupId>com.pi4j</groupId>
+		    <artifactId>pi4j-device</artifactId>
+		   <version>1.2-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+		    <groupId>com.pi4j</groupId>
+		    <artifactId>pi4j-gpio-extension</artifactId>
+		   <version>1.2-SNAPSHOT</version>
+		</dependency>
 		<dependency>
 			<groupId>org.json</groupId>
 			<artifactId>json</artifactId>
@@ -69,31 +78,6 @@
             <artifactId>spring-boot-starter-data-mongodb</artifactId>
         </dependency>
         
-        <dependency>
-		    <groupId>com.pi4j</groupId>
-		    <artifactId>pi4j-core</artifactId>
-		   <version>1.0</version>
-		</dependency>
-		<!-- 
-		<dependency>
-		  <groupId>org.springframework.integration</groupId>
-	      <artifactId>spring-integration-stream</artifactId>
-	      <version>4.3.0.RELEASE</version>
-	      <scope>compile</scope>
-	    </dependency>
-	    <dependency>
-	      <groupId>org.springframework.integration</groupId>
-	      <artifactId>spring-integration-mqtt</artifactId>
-	      <version>4.3.0.RELEASE</version>
-	      <scope>compile</scope>
-	    </dependency>
-	    <dependency>
-	      <groupId>org.springframework.integration</groupId>
-	      <artifactId>spring-integration-java-dsl</artifactId>
-	      <version>1.1.2.RELEASE</version>
-	      <scope>compile</scope>
-	    </dependency>
-	     -->
 	    <dependency>
 		    <groupId>org.eclipse.paho</groupId>
 		    <artifactId>org.eclipse.paho.client.mqttv3</artifactId>
@@ -119,6 +103,18 @@
 		</dependency>	
 
 	</dependencies>
+	
+	<repositories>
+		<repository>
+			<id>oss-snapshots-repo</id>
+			<name>Sonatype OSS Maven Repository</name>
+			<url>https://oss.sonatype.org/content/groups/public</url>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+			</snapshots>
+		</repository>
+	</repositories>
 	
 	<build>
 		<plugins>

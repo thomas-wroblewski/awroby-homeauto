@@ -1,25 +1,23 @@
 package com.awroby.auto.service;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.awroby.auto.controllers.LedSignController;
 
 @Service
 public class LedSignService {
 
 	private String scriptPath = "/home/pi/Led.pl"; 
 	private static final Logger logger = LoggerFactory.getLogger(LedSignService.class);
+	@Autowired ScheduledTasks scheduler;
 
 	
 	public void DisplayMessage(String msg, String color, String effect) throws IOException, InterruptedException {
@@ -41,6 +39,11 @@ public class LedSignService {
 		if(exitCode != 0) {
 			throw new IOException();
 		}
+		
+		scheduler.setLedLatch(System.currentTimeMillis());
+		scheduler.setSwitched(true);
+		
+		
 	}
 	
 	private String getColor(String subColor) {
